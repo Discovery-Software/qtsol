@@ -2,4 +2,6 @@
 *.orig
 *.vcxproj
 *.vcxproj.filters
+debug
+release
 
