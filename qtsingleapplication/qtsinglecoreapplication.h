@@ -30,6 +30,10 @@
 
 #include <QCoreApplication>
 
+#include "qtsol_global.h"
+
+#define QT_QTSINGLECOREAPPLICATION_EXPORT QTSOL_EXPORT
+
 namespace SharedTools {
 
 class QtLocalPeer;

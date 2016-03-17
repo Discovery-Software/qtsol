@@ -30,13 +30,17 @@
 
 #include <QApplication>
 
+#include "qtsol_global.h"
+
+#define QT_QTSINGLEAPPLICATION_EXPORT QTSOLSHARED_EXPORT
+
 QT_FORWARD_DECLARE_CLASS(QSharedMemory)
 
 namespace SharedTools {
 
 class QtLocalPeer;
 
-class QtSingleApplication : public QApplication
+class QT_QTSINGLEAPPLICATION_EXPORT QtSingleApplication : public QApplication
 {
     Q_OBJECT
 

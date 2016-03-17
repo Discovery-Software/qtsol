@@ -34,9 +34,13 @@
 #include <QLocalSocket>
 #include <QDir>
 
+#include "qtsol_global.h"
+
+#define QT_QTLOCALPEER_EXPORT QTSOLSHARED_EXPORT
+
 namespace SharedTools {
 
-class QtLocalPeer : public QObject
+class QT_QTLOCALPEER_EXPORT QtLocalPeer : public QObject
 {
     Q_OBJECT
 
