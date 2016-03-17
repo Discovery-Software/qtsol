@@ -28,7 +28,7 @@
 **
 ****************************************************************************/
 
-#include <QApplication>
+#include <QApplication.h>
 
 #include "qtsol_global.h"
 

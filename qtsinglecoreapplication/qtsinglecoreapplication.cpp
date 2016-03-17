@@ -28,41 +28,42 @@
 **
 ****************************************************************************/
 
-#include <qtlockedfile.h>
-
-#include <QLocalServer>
-#include <QLocalSocket>
-#include <QDir>
-
-#include "qtsol_global.h"
-
-#define QT_QTLOCALPEER_EXPORT QTSOLSHARED_EXPORT
+#include "qtsinglecoreapplication.h"
+#include <qtlocalpeer.h>
 
 namespace SharedTools {
 
-class QT_QTLOCALPEER_EXPORT QtLocalPeer : public QObject
+QtSingleCoreApplication::QtSingleCoreApplication(int &argc, char **argv)
+    : QCoreApplication(argc, argv)
 {
-    Q_OBJECT
+    peer = new QtLocalPeer(this);
+    connect(peer, SIGNAL(messageReceived(QString)), SIGNAL(messageReceived(QString)));
+}
 
-public:
-    explicit QtLocalPeer(QObject *parent = 0, const QString &appId = QString());
-    bool isClient();
-    bool sendMessage(const QString &message, int timeout, bool block);
-    QString applicationId() const
-        { return id; }
-    static QString appSessionId(const QString &appId);
 
-Q_SIGNALS:
-    void messageReceived(const QString &message, QObject *socket);
+QtSingleCoreApplication::QtSingleCoreApplication(const QString &appId, int &argc, char **argv)
+    : QCoreApplication(argc, argv)
+{
+    peer = new QtLocalPeer(this, appId);
+    connect(peer, SIGNAL(messageReceived(QString)), SIGNAL(messageReceived(QString)));
+}
 
-protected Q_SLOTS:
-    void receiveConnection();
 
-protected:
-    QString id;
-    QString socketName;
-    QLocalServer* server;
-    QtLockedFile lockFile;
-};
+bool QtSingleCoreApplication::isRunning()
+{
+    return peer->isClient();
+}
+
+
+bool QtSingleCoreApplication::sendMessage(const QString &message, int timeout)
+{
+    return peer->sendMessage(message, timeout, true);
+}
+
+
+QString QtSingleCoreApplication::id() const
+{
+    return peer->applicationId();
+}
 
 } // namespace SharedTools

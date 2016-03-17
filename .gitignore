@@ -1,5 +1,5 @@
 *.user
 *.orig
-qtsol.vcxproj
-qtsol.vcxproj.filters
+*.vcxproj
+*.vcxproj.filters
 

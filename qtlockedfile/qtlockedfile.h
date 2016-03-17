@@ -34,11 +34,9 @@
 #include <QFile>
 #include "qtsol_global.h"
 
-#define QT_QTLOCKEDFILE_EXPORT QTSOLSHARED_EXPORT
-
 namespace SharedTools {
 
-class QT_QTLOCKEDFILE_EXPORT QtLockedFile : public QFile
+class QTSOLSHARED_EXPORT QtLockedFile : public QFile
 {
 public:
     enum LockMode { NoLock = 0, ReadLock, WriteLock };

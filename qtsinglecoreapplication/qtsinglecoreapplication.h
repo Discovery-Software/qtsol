@@ -32,13 +32,11 @@
 
 #include "qtsol_global.h"
 
-#define QT_QTSINGLECOREAPPLICATION_EXPORT QTSOL_EXPORT
-
 namespace SharedTools {
 
 class QtLocalPeer;
 
-class QtSingleCoreApplication : public QCoreApplication
+class QTSOLSHARED_EXPORT QtSingleCoreApplication : public QCoreApplication
 {
     Q_OBJECT
 
