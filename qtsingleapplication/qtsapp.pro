@@ -17,7 +17,7 @@ LibrariesDir = "$$SourceRootDir/libraries"
 CONFIG	+= dll
 TEMPLATE = lib
 
-QT *= network
+QT *= network widgets
 
 DESTDIR = "$$LibraryDir"
 DLLDESTDIR = "$$ApplicationDir"
