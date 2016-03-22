@@ -7,15 +7,15 @@ CONFIG(debug, debug|release) {
 }
 
 PATH_TO_QT_SOLUTIONS = "$$dirname(PWD)"
-_QTSCAPD2 = "$$dirname(PATH_TO_QT_SOLUTIONS)"
-SourceRootDir = "$$dirname(_QTSCAPD2)"
-ApplicationDir = "$$SourceRootDir/build/$$Configuration/bin"
-LibraryDir = "$$SourceRootDir/build/$$Configuration/lib"
-ObjectsDir = "$$SourceRootDir/build/$$Configuration/tmp/$$TARGET-$$GUID"
-LibrariesDir = "$$SourceRootDir/libraries"
+LibrariesDir = "$$dirname(PATH_TO_QT_SOLUTIONS)"
+SourceRootDir = "$$dirname(LibrariesDir)"
+ConfigDir = "$$SourceRootDir/build/$$Configuration"
+ApplicationDir = "$$ConfigDir/bin"
+LibraryDir = "$$ConfigDir/lib"
+ObjectsDir = "$$ConfigDir/tmp/$$TARGET-$$GUID"
 
-CONFIG	+= dll
 TEMPLATE = lib
+CONFIG	+= shared
 
 QT *= network
 
