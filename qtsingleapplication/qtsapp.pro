@@ -1,4 +1,4 @@
-GUID = d9de5012-33f0-4c3e-8c91-ad7b5b7827f3
+GUID = 455d17c9-614f-4b91-bbfa-29e462b5c361
 
 CONFIG(debug, debug|release) {
 	Configuration = Debug
